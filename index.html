@@ -6,6 +6,7 @@
 <title>bless.aff</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
 <style>
   :root {
     --bg: #0a0a0a;
@@ -19,7 +20,6 @@
     --accent: #c8f060;
     --accent-dim: rgba(200,240,96,0.12);
     --accent-glow: rgba(200,240,96,0.06);
-    --red: #ff4d4d;
     --card-radius: 16px;
     --transition: 0.2s cubic-bezier(0.4,0,0.2,1);
   }
@@ -36,7 +36,6 @@
     overflow-x: hidden;
   }
 
-  /* NOISE TEXTURE OVERLAY */
   body::before {
     content: '';
     position: fixed;
@@ -47,14 +46,12 @@
     z-index: 0;
   }
 
-  /* HEADER */
   header {
     position: sticky;
     top: 0;
     z-index: 100;
     background: rgba(10,10,10,0.85);
     backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
     padding: 0 24px;
   }
@@ -100,7 +97,6 @@
     50% { opacity: 0.5; transform: scale(0.7); }
   }
 
-  /* SEARCH */
   .search-wrap {
     flex: 1;
     max-width: 480px;
@@ -148,7 +144,6 @@
     font-weight: 600;
   }
 
-  /* MAIN LAYOUT */
   main {
     max-width: 1400px;
     margin: 0 auto;
@@ -157,39 +152,52 @@
     z-index: 1;
   }
 
-  /* SORT BAR */
-  .sort-bar {
+  .hero {
+    padding: 40px 0 32px;
+    margin-bottom: 8px;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 28px;
+    gap: 8px;
   }
 
-  .sort-select {
-    background: var(--surface2);
-    border: 1px solid var(--border2);
-    border-radius: 10px;
-    padding: 7px 12px;
-    color: var(--text-dim);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    outline: none;
-    cursor: pointer;
-    transition: border-color var(--transition);
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 1px;
+    background: var(--accent);
   }
 
-  .sort-select:focus {
-    border-color: var(--accent);
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 800;
+    letter-spacing: -2px;
+    line-height: 1.05;
+    color: var(--text);
   }
 
-  /* GRID */
+  .hero h1 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
   #productGrid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 16px;
   }
 
-  /* CARD */
   .card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -235,21 +243,6 @@
     justify-content: center;
     color: var(--text-muted);
     font-size: 32px;
-  }
-
-  .commission-badge {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background: var(--accent);
-    color: #0a0a0a;
-    font-family: 'Syne', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    padding: 3px 8px;
-    border-radius: 6px;
-    line-height: 1.4;
   }
 
   .card-body {
@@ -299,10 +292,9 @@
     color: var(--text-muted);
     font-weight: 500;
     letter-spacing: 0.3px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 120px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
   }
 
   .card-sales {
@@ -317,29 +309,6 @@
     font-weight: 600;
   }
 
-  /* COMMISSION ROW */
-  .card-commission {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding-top: 8px;
-    border-top: 1px solid var(--border);
-    margin-top: 2px;
-  }
-
-  .commission-label {
-    font-size: 11px;
-    color: var(--text-muted);
-  }
-
-  .commission-value {
-    font-family: 'Syne', sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--accent);
-  }
-
-  /* EMPTY STATE */
   .empty-state {
     grid-column: 1 / -1;
     padding: 80px 20px;
@@ -361,53 +330,10 @@
     margin-bottom: 8px;
   }
 
-  /* HERO SECTION */
-  .hero {
-    padding: 40px 0 32px;
-    margin-bottom: 8px;
-  }
-
-  .hero-eyebrow {
-    font-family: 'Syne', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .hero-eyebrow::before {
-    content: '';
-    display: block;
-    width: 20px;
-    height: 1px;
-    background: var(--accent);
-  }
-
-  .hero h1 {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(32px, 4vw, 52px);
-    font-weight: 800;
-    letter-spacing: -2px;
-    line-height: 1.05;
-    color: var(--text);
-  }
-
-  .hero h1 em {
-    font-style: normal;
-    color: var(--accent);
-  }
-
-  /* SCROLLBAR */
   ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { background: transparent; }
   ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
 
-  /* RESPONSIVE */
   @media (max-width: 640px) {
     .header-inner { height: 56px; padding: 0; gap: 12px; }
     header { padding: 0 16px; }
@@ -415,10 +341,6 @@
     #productGrid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
     .hero { padding: 24px 0 20px; }
     .hero h1 { font-size: 28px; }
-  }
-
-  @media (max-width: 400px) {
-    #productGrid { grid-template-columns: 1fr 1fr; }
   }
 </style>
 </head>
@@ -448,24 +370,12 @@
     <h1>produk <em>terpilih</em><br>harga terbaik.</h1>
   </div>
 
-  <div class="sort-bar">
-    <select class="sort-select" id="sortSelect">
-      <option value="default">Urutkan: Default</option>
-      <option value="price-asc">Harga: Rendah ke Tinggi</option>
-      <option value="price-desc">Harga: Tinggi ke Rendah</option>
-      <option value="sales-desc">Terlaris</option>
-    </select>
-  </div>
-
   <div id="productGrid"></div>
 </main>
 
 <script>
 // ============================
-// DATA — PASTE CSV DATA DI SINI
-// Untuk menambah produk dari CSV baru, paste isi CSV di bawah ini
-// (pisahkan dengan baris baru, format: tab-separated sesuai ekspor Shopee)
-// ============================
+// DATA (sama seperti sebelumnya)
 const RAW_CSV = `ID Produk	Nama Produk	Harga	Penjualan	Nama Toko	Komisi hingga	Komisi	Link Produk	Link Komisi Ekstra	Link Gambar
 29811410033	1SET TINTA EPSON 003 ORIGINAL TIPE PRINTER L SERIES  L1110, L3110, L5190, L1210, L1216, L1250, L1256	139,5RB	6RB+	TRENDY_LASER	20%	Rp27.900	https://shopee.co.id/product/1359110064/29811410033	https://s.shopee.co.id/9Ux5ZNrfgE	https://down-id.img.susercontent.com/file/id-11134207-7ras8-m0ro2xo7hsm8c4@resize_w900_nl.webp
 28006047255	Celana Pria Panjang Gombrong Chinos Katun Drill	90,0RB	10RB+	alkasop	10%	Rp9.000	https://shopee.co.id/product/643424658/28006047255	https://s.shopee.co.id/9KdfN4sJ1D	https://down-id.img.susercontent.com/file/id-11134207-7ra0h-mcxtg11p0tnr97_tn
@@ -546,30 +456,29 @@ const RAW_CSV = `ID Produk	Nama Produk	Harga	Penjualan	Nama Toko	Komisi hingga	K
 25130743341	TRIPOD HP DAN KAMERA UNIVERSAL + FREE HOLDER U WEIFENG Tripod mini 3110/3120 handphone hp u holder tripod konten kreator tongsis tripod bluetooth	58,5RB	1RB+	ZUOM. 3C Case	10%	Rp5.850	https://shopee.co.id/product/1003982197/25130743341	https://s.shopee.co.id/6VJNIBCxad	https://down-id.img.susercontent.com/file/id-11134207-7r98z-lvbo9gsfbsg34c_tn`;
 
 // ============================
-// PARSER
+// PARSER & HELPER
 // ============================
 function parsePrice(str) {
   if (!str) return 0;
-  str = str.toString().trim().toUpperCase();
+  let s = str.toString().trim().toUpperCase();
   let multiplier = 1;
-  if (str.endsWith('JT') || str.endsWith('JT+')) { multiplier = 1000000; str = str.replace(/JT\+?$/, ''); }
-  else if (str.endsWith('RB') || str.endsWith('RB+')) { multiplier = 1000; str = str.replace(/RB\+?$/, ''); }
-  str = str.replace(/[^0-9,.]/g, '').replace(',', '.');
-  return parseFloat(str) * multiplier || 0;
+  if (s.endsWith('JT') || s.endsWith('JT+')) { multiplier = 1000000; s = s.replace(/JT\+?$/, ''); }
+  else if (s.endsWith('RB') || s.endsWith('RB+')) { multiplier = 1000; s = s.replace(/RB\+?$/, ''); }
+  
+  s = s.replace(/[^0-9,.]/g, '').replace(',', '.');
+  return parseFloat(s) * multiplier || 0;
 }
 
 function parseSales(str) {
   if (!str) return 0;
-  str = str.toString().trim().toUpperCase();
-  if (str.endsWith('JT+') || str.endsWith('JT')) { return parseFloat(str) * 1000000; }
-  if (str.endsWith('RB+') || str.endsWith('RB')) { return parseFloat(str) * 1000; }
-  return parseInt(str.replace(/[^0-9]/g, '')) || 0;
+  let s = str.toString().trim().toUpperCase();
+  if (s.endsWith('JT+') || s.endsWith('JT')) return parseFloat(s) * 1000000;
+  if (s.endsWith('RB+') || s.endsWith('RB')) return parseFloat(s) * 1000;
+  return parseInt(s.replace(/[^0-9]/g, '')) || 0;
 }
 
-function parseCommissionValue(str) {
-  if (!str) return 0;
-  str = str.toString().trim().replace(/[^0-9]/g, '');
-  return parseInt(str) || 0;
+function formatPrice(num) {
+  return 'Rp ' + Math.round(num).toLocaleString('id-ID');
 }
 
 function parseCSV(raw) {
@@ -587,21 +496,14 @@ function parseCSV(raw) {
   return results;
 }
 
-// ============================
-// MAP TO PRODUCT OBJECTS
-// ============================
 function mapProducts(rows) {
   return rows.map((r, i) => ({
     id: r['ID Produk'] || i,
     name: r['Nama Produk'] || '-',
-    priceRaw: r['Harga'] || '0',
     priceNum: parsePrice(r['Harga']),
     sales: r['Penjualan'] || '0',
     salesNum: parseSales(r['Penjualan']),
     store: r['Nama Toko'] || '-',
-    commissionPct: r['Komisi hingga'] || '',
-    commissionVal: r['Komisi'] || '',
-    commissionNum: parseCommissionValue(r['Komisi']),
     link: r['Link Komisi Ekstra'] || r['Link Produk'] || '#',
     image: r['Link Gambar'] || '',
   }));
@@ -612,18 +514,10 @@ function mapProducts(rows) {
 // ============================
 let allProducts = [];
 let searchQuery = '';
-let sortMode = 'default';
 
 // ============================
 // RENDER
 // ============================
-function formatPrice(raw) {
-  if (!raw) return '-';
-  const num = parsePrice(raw.toString());
-  if (!num) return raw;
-  return 'Rp ' + num.toLocaleString('id-ID');
-}
-
 function renderCard(p, delay) {
   return `
     <a class="card" href="${p.link}" target="_blank" rel="noopener" style="animation-delay:${delay}ms">
@@ -631,30 +525,25 @@ function renderCard(p, delay) {
         ${p.image
           ? `<img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\"img-placeholder\\">🛍️</div>'">`
           : `<div class="img-placeholder">🛍️</div>`}
-        ${p.commissionPct ? `<div class="commission-badge">${p.commissionPct}</div>` : ''}
       </div>
       <div class="card-body">
         <div class="card-title">${p.name}</div>
         <div class="card-meta">
-          <div class="card-price">${formatPrice(p.priceRaw)}</div>
+          <div class="card-price">${formatPrice(p.priceNum)}</div>
           <div class="card-bottom">
-            <div class="card-store">🏪 ${p.store}</div>
+            <div class="card-store">
+              <i class="ph ph-storefront" style="font-size:13px"></i>
+              ${p.store}
+            </div>
             <div class="card-sales"><span>${p.sales}</span> terjual</div>
           </div>
-          ${p.commissionVal ? `
-          <div class="card-commission">
-            <div class="commission-label">komisi:</div>
-            <div class="commission-value">${p.commissionVal}</div>
-          </div>` : ''}
         </div>
       </div>
     </a>`;
 }
 
-function getFilteredSorted() {
+function getFiltered() {
   let list = [...allProducts];
-
-  // Search
   if (searchQuery) {
     const q = searchQuery.toLowerCase();
     list = list.filter(p =>
@@ -662,17 +551,11 @@ function getFilteredSorted() {
       p.store.toLowerCase().includes(q)
     );
   }
-
-  // Sort
-  if (sortMode === 'price-asc') list.sort((a,b) => a.priceNum - b.priceNum);
-  else if (sortMode === 'price-desc') list.sort((a,b) => b.priceNum - a.priceNum);
-  else if (sortMode === 'sales-desc') list.sort((a,b) => b.salesNum - a.salesNum);
-
   return list;
 }
 
 function render() {
-  const list = getFilteredSorted();
+  const list = getFiltered();
   const grid = document.getElementById('productGrid');
   document.getElementById('visibleCount').textContent = list.length;
 
@@ -681,7 +564,7 @@ function render() {
       <div class="empty-state">
         <span class="emoji">🔍</span>
         <h3>Produk tidak ditemukan</h3>
-        <p>Coba kata kunci lain atau ubah filter.</p>
+        <p>Coba kata kunci lain.</p>
       </div>`;
     return;
   }
@@ -690,16 +573,13 @@ function render() {
 }
 
 // ============================
-// FILTER CHIPS (by store)
-// ============================
-// ============================
 // INIT
 // ============================
 function init() {
   const rows = parseCSV(RAW_CSV);
   allProducts = mapProducts(rows);
 
-  // Remove duplicates by ID
+  // Hapus duplikat berdasarkan ID
   const seen = new Set();
   allProducts = allProducts.filter(p => {
     if (seen.has(p.id)) return false;
@@ -709,11 +589,6 @@ function init() {
 
   document.getElementById('searchInput').addEventListener('input', e => {
     searchQuery = e.target.value;
-    render();
-  });
-
-  document.getElementById('sortSelect').addEventListener('change', e => {
-    sortMode = e.target.value;
     render();
   });
 
